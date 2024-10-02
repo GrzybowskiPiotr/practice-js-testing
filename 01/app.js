@@ -17,14 +17,14 @@ function getProductList() {
   ];
 }
 
+function calcTotalPrice(item) {
+  let total = item.price * item.count;
+  return total - total * item.discount;
+}
+
 function getTotalPrice(productList) {
   return productList.reduce((product, acc) => {
-    return (
-      acc.price * acc.count -
-      acc.price * acc.count * acc.discount +
-      product.price * product.count -
-      product.price * product.count * product.discount
-    ).toFixed(2);
+    return (calcTotalPrice(acc) + calcTotalPrice(product)).toFixed(2);
   });
 }
 
