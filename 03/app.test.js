@@ -15,7 +15,13 @@ function testArgsAreNumbes() {
   } catch (error) {
     return `Funkcja zwraca ${error}`;
   }
+
+  try {
+    randomNumber(2, "D");
+  } catch (e) {
+    return `Funkcja zwraca błąd ${e}`;
+  }
 }
 
 console.log(`Test liczb z zakresu 1 - 1. Wynik testu ${testArg11()}`);
-console.log(`Test błędnego zargumentu. Wynik testu ${testArgsAreNumbes()}`);
+console.log(`Test błędnego argumentu. Wynik testu ${testArgsAreNumbes()}`);
