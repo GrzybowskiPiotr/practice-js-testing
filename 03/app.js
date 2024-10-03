@@ -8,6 +8,10 @@ export default function randomNumber(min, max) {
   } else if (min > max) {
     throw new Error("The first argument must have lower value then second");
   } else {
-    return Math.random() * (min - max) + min;
+    const minCeli = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeli) + minCeli);
+    // console.log(randomNumberValue);
+    // return randomNumberValue;
   }
 }

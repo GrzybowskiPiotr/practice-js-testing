@@ -1,53 +1,37 @@
 import randomNumber from "./app.js";
 
-function testArg11() {
-  const testExpects = 1;
-  if (randomNumber(1, 1) === testExpects) {
-    return `test Ok.`;
-  } else {
-    return `test not ok.`;
-  }
-}
+test("random number form 1 to 1 is 1", () => {
+  expect(randomNumber(1, 1)).toBe(1);
+});
 
-function testArgsAreNumbes() {
-  try {
-    randomNumber("a", 2);
-  } catch (e) {
-    if ((e = "Arguments must be of type Number")) {
-      return `Test ok. Funkcja zwraca ${e}`;
-    }
-  }
+test("if function return error on NaN arg", () => {
+  expect(() =>
+    randomNumber("a", 2).toThrow("Arguments must be of type Number")
+  );
+  expect(() =>
+    randomNumber(2, "b").toThrow("Arguments must be of type Number")
+  );
+});
 
-  try {
-    randomNumber(2, "D");
-  } catch (e) {
-    if ((e = "Arguments must be of type Number")) {
-      return `Test ok. Funkcja zwraca ${e}`;
-    }
-  }
-}
-
-function testValueArgs() {
-  try {
-    randomNumber(4, 3);
-  } catch (error) {
-    if (error) return `Test ok. ${error}`;
-    else {
-      return `Test not ok. ${error}`;
-    }
-  }
-}
-
-function testRangeVal(min, max) {
-  const randomeNumber = randomNumber(min, max);
-  if (randomeNumber > min || randomeNumber < max) {
-    return `test ok. wartość mieści się pomiędzy ${min} - ${max}`;
-  } else {
-    return `Test Nok. wartość poza zakresem`;
-  }
-}
-
-console.log(`Test liczb z zakresu 1 - 1. ${testArg11()}`);
-console.log(`Test błędnego argumentu. ${testArgsAreNumbes()}`);
-console.log(`Test błędnego zakresu argumentów. ${testValueArgs()}`);
-console.log(`Test wartosci w zakresie ${testRangeVal(3, 9)}`);
+test("if first argument is lower than second", () => {
+  expect(() =>
+    randomNumber(4, 3).toThrow(
+      "The first argument must have lower value then second"
+    )
+  );
+});
+test("if function return value form given range", () => {
+  const randomNumberValue = randomNumber(4, 9);
+  expect(randomNumberValue).toBeGreaterThan(4);
+  expect(randomNumberValue).toBeLessThan(9);
+});
+// function testValueArgs() {
+//   try {
+//     randomNumber(4, 3);
+//   } catch (error) {
+//     if (error) return `Test ok. ${error}`;
+//     else {
+//       return `Test not ok. ${error}`;
+//     }
+//   }
+// }
