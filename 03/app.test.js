@@ -9,4 +9,13 @@ function testArg11() {
   }
 }
 
+function testArgsAreNumbes() {
+  try {
+    randomNumber("a", 2);
+  } catch (error) {
+    return `Funkcja zwraca ${error}`;
+  }
+}
+
 console.log(`Test liczb z zakresu 1 - 1. Wynik testu ${testArg11()}`);
+console.log(`Test błędnego zargumentu. Wynik testu ${testArgsAreNumbes()}`);
