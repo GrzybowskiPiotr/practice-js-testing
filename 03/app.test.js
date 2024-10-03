@@ -20,18 +20,9 @@ test("if first argument is lower than second", () => {
     )
   );
 });
+
 test("if function return value form given range", () => {
   const randomNumberValue = randomNumber(4, 9);
   expect(randomNumberValue).toBeGreaterThan(4);
   expect(randomNumberValue).toBeLessThan(9);
 });
-// function testValueArgs() {
-//   try {
-//     randomNumber(4, 3);
-//   } catch (error) {
-//     if (error) return `Test ok. ${error}`;
-//     else {
-//       return `Test not ok. ${error}`;
-//     }
-//   }
-// }
